@@ -18,15 +18,15 @@ router.route("/").get(renderMainPage);
 router.route("/dashboard").get(renderDashboard).post(addHabit);
 
 // Toggle user view between week and day view
-router.route("/user-view").post(toggleUserView);
+router.route("/userView").post(toggleUserView);
 
 // Toggle favorite habits
-router.route("/favorite-habit").get(toggleFavoriteHabits);
+router.route("/favourites").get(toggleFavoriteHabits);
 
 // Update habit status
-router.route("/status-update").get(updateHabitStatus);
+router.route("/updateStatus").get(updateHabitStatus);
 
 // Delete a habit
-router.route("/remove").get(deleteHabit);
+router.route("/delete").get(deleteHabit);
 
 module.exports = router;

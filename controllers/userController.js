@@ -13,7 +13,7 @@ const loginUser = async (req, res) => {
     if (!user) {
       // If user doesn't exist, render the login page with an error message
       let errors = [];
-      errors.push({ msg: "This email is not registered" });
+      errors.push({ msg: "This email is not registered!" });
       res.render("login", {
         errors,
         name,
@@ -41,7 +41,7 @@ const registerUser = async (req, res) => {
 
   // Validate name and email fields
   if (!name || !email) {
-    errors.push({ msg: "Please enter all fields" });
+    errors.push({ msg: "Please enter all fields!" });
   }
 
   if (errors.length > 0) {
@@ -56,7 +56,7 @@ const registerUser = async (req, res) => {
       const user = await User.findOne({ email: email });
       if (user) {
         // If user already exists, render the register page with an error message
-        errors.push({ msg: "Email ID already exists" });
+        errors.push({ msg: "Email already exists!" });
         res.render("register", {
           errors,
           name,
@@ -69,7 +69,7 @@ const registerUser = async (req, res) => {
           email,
         });
         await newUser.save();
-        req.flash("success_msg", "You are now registered and can log in");
+        req.flash("success_msg", "Registered Successfully, You can now login!");
         res.redirect("/users/login");
       }
     } catch (err) {
@@ -81,7 +81,7 @@ const registerUser = async (req, res) => {
 
 // Logout the user
 const logoutUser = (req, res) => {
-  req.flash("success_msg", "You are logged out");
+  req.flash("success_msg", "You are logged out!");
   res.redirect("/users/login");
 };
 

@@ -15,7 +15,7 @@ connectDb();
 app.use(expressLayouts);
 
 // Serve static assets from the "assets" directory
-app.use("/assets", express.static("./assets"));
+app.use("/assets", express.static("./views/assets"));
 
 // Set the view engine to EJS
 app.set("view engine", "ejs");

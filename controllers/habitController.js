@@ -14,25 +14,25 @@ const getDateString = (n) => {
   let day = "";
   switch (date.getDay()) {
     case 0:
-      day = "Sunday";
+      day = "Sun";
       break;
     case 1:
-      day = "Monday";
+      day = "Mon";
       break;
     case 2:
-      day = "Tuesday";
+      day = "Tue";
       break;
     case 3:
-      day = "Wednesday";
+      day = "Wed";
       break;
     case 4:
-      day = "Thursday";
+      day = "Thu";
       break;
     case 5:
-      day = "Friday";
+      day = "Fri";
       break;
     case 6:
-      day = "Saturday";
+      day = "Sat";
       break;
   }
   return { date: newDate, day };
@@ -40,7 +40,7 @@ const getDateString = (n) => {
 
 // Render the main page
 const renderMainPage = (req, res) => {
-  res.render("welcome");
+  res.render("login");
 };
 
 // Render the dashboard and fetch user's habits and dates
@@ -74,7 +74,7 @@ const toggleUserView = async (req, res) => {
     await user.save();
     return res.redirect("back");
   } catch (err) {
-    console.log("Error changing view!");
+    console.log("Toggle Daily/Weekly view error, Try Again!");
     res.status(500).send("Internal Server Error");
   }
 };
@@ -91,7 +91,7 @@ const addHabit = async (req, res) => {
       const found = dates.find((item) => item.date === today);
       if (found) {
         console.log("Habit exists!");
-        req.flash("error_msg", "Habit already exists!");
+        req.flash("error_msg", "Habit is already in your track!");
         return res.redirect("back");
       } else {
         // Add a new date for the habit if it doesn't exist for today
@@ -138,7 +138,7 @@ const toggleFavoriteHabits = async (req, res) => {
     );
     return res.redirect("back");
   } catch (err) {
-    console.log("Error adding to favorites!");
+    console.log("Toggle favourites error, Try again!");
     res.status(500).send("Internal Server Error");
   }
 };
@@ -172,7 +172,7 @@ const updateHabitStatus = async (req, res) => {
     await habit.save();
     return res.redirect("back");
   } catch (err) {
-    console.log("Error updating status!");
+    console.log("Status updation error, Try again!");
     res.status(500).send("Internal Server Error");
   }
 };
@@ -183,10 +183,10 @@ const deleteHabit = async (req, res) => {
   try {
     // Delete the habit by id and associated with the user's email
     await Habit.deleteMany({ _id: id, email });
-    req.flash("success_msg", "Record(s) deleted successfully!");
+    req.flash("success_msg", "Habit deleted successfully!");
     return res.redirect("back");
   } catch (err) {
-    console.log("Error in deleting record(s)!");
+    console.log("Deletion Error, Try again!");
     res.status(500).send("Internal Server Error");
   }
 };
