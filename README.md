@@ -5,7 +5,7 @@ The Habit Tracker App is a web application that helps users track their daily ha
 ## Table of Contents
 
 - [Features](#features)
-- [Technologies Used](#technology-used)
+- [Technologies Used](#technologies-used)
 - [Installation](#installation)
 - [Usage](#usage)
 - [License](#license)
@@ -33,13 +33,13 @@ The Habit Tracker App is built using the following technologies:
 To run the Habit Tracker App locally, follow these steps:
 
 1. Clone the GitHub repository:
-   git clone https://github.com/DigvijayDheer/Habit_Tracker_App.git
+   `git clone https://github.com/DigvijayDheer/Habit_Tracker_App.git`
 
 2. Navigate to the project directory:
-   cd Habit_Tracker_App
+   `cd Habit_Tracker_App`
 
 3. Install the dependencies:
-   npm install
+   `npm install`
 
 4. Set up the environment variables:
 
@@ -52,7 +52,7 @@ To run the Habit Tracker App locally, follow these steps:
   Replace `<your_mongodb_uri>` with your MongoDB connection string.
 
 5. Start the application:
-   npm start
+   `npm start`
 
 6. Open your web browser and visit `http://localhost:5000` to access the Habit Tracker App.
 
